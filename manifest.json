@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Markdown 转 Bilibili 笔记",
+  "version": "0.9.0",
+  "description": "读取本地 Markdown，转换为适合粘贴到 Bilibili 笔记编辑器的富文本。",
+  "permissions": ["activeTab", "tabs", "clipboardWrite"],
+  "action": {
+    "default_title": "Markdown 转 Bilibili 笔记",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.bilibili.com/*",
+        "https://member.bilibili.com/*"
+      ],
+      "js": ["page-bridge.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://www.bilibili.com/*",
+        "https://member.bilibili.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

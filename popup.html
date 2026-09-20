@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Markdown 转 Bilibili 笔记</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="logo">M↓B</div>
+        <div>
+          <h1>Markdown 转笔记</h1>
+          <p>本地转换，不上传文件</p>
+        </div>
+      </header>
+
+      <label class="drop-zone" id="dropZone">
+        <input id="fileInput" type="file" accept=".md,.markdown,text/markdown,text/plain">
+        <span class="drop-title">选择或拖入 Markdown 文件</span>
+        <span class="drop-hint">支持标题、列表、引用、表格、代码与链接</span>
+      </label>
+
+      <section class="document-card" id="documentCard" hidden>
+        <div>
+          <strong id="fileName"></strong>
+          <span id="stats"></span>
+        </div>
+        <button id="changeFile" class="text-button" type="button">更换</button>
+      </section>
+
+      <div id="warning" class="warning" hidden></div>
+
+      <section id="imageControls" class="image-controls" hidden>
+        <input id="imageFolderInput" type="file" webkitdirectory multiple>
+        <input id="manualImageInput" type="file" accept="image/*">
+        <button id="selectImageFolder" class="secondary compact" type="button">添加图片目录</button>
+        <span id="imageMatchStatus"></span>
+        <div id="missingImageList" class="missing-image-list"></div>
+      </section>
+
+      <section class="preview-section" id="previewSection" hidden>
+        <div class="section-title">转换预览</div>
+        <article id="preview" class="preview"></article>
+      </section>
+
+      <section class="controls" id="controls" hidden>
+        <label>
+          写入方式
+          <select id="insertMode">
+            <option value="append">在光标处插入</option>
+            <option value="replace">替换编辑器内容</option>
+          </select>
+        </label>
+        <button id="insertButton" class="primary" type="button">写入 Bilibili 笔记正文</button>
+        <button id="copyButton" class="secondary" type="button">复制富文本</button>
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite">
+        先在 Bilibili 页面打开笔记编辑器，再使用本插件。
+      </p>
+    </main>
+    <script src="markdown.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
